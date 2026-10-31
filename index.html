@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Java Programming Lab</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="brand">
+        <div class="logo">J</div>
+        <span>Java Programming <b>Lab</b></span>
+    </div>
+
+    <div class="nav-right">
+        <span class="status">● Practice Library</span>
+        <button id="menuBtn" class="menu-btn">☰</button>
+    </div>
+</header>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-heading">
+            <small>LIBRARY</small>
+            <h2>Topics</h2>
+        </div>
+
+        <input
+            type="search"
+            id="searchInput"
+            placeholder="Search programs..."
+        >
+
+        <nav id="topicNav"></nav>
+
+        <div class="sidebar-footer">
+            <span>●</span> Java Source Collection
+        </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <div class="breadcrumb">
+            <span>Home</span>
+            <span>/</span>
+            <span id="breadcrumbTopic">All Topics</span>
+        </div>
+
+        <!-- HOME PAGE -->
+
+        <section id="homeSection">
+
+            <div class="hero">
+
+                <div class="hero-content">
+
+                    <small>JAVA PRACTICE COLLECTION</small>
+
+                    <h1>
+                        Learn Java.<br>
+                        <span>One program at a time.</span>
+                    </h1>
+
+                    <p>
+                        Explore Java programs topic-wise.
+                        Read the source code, copy it and
+                        download individual programs.
+                    </p>
+
+                    <div class="stats">
+
+                        <div>
+                            <h2 id="totalPrograms">0</h2>
+                            <small>Programs</small>
+                        </div>
+
+                        <div>
+                            <h2 id="totalTopics">0</h2>
+                            <small>Topics</small>
+                        </div>
+
+                        <div>
+                            <h2>Java</h2>
+                            <small>Language</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="hero-code">
+                    <div class="code-window">
+                        <span>class</span> HelloJava {<br><br>
+                        &nbsp;&nbsp;public static void main(String[] args) {<br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;System.out.println(<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Hello Java!"<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;);<br><br>
+                        &nbsp;&nbsp;}<br>
+                        }
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="section-heading">
+
+                <div>
+                    <small>EXPLORE THE LIBRARY</small>
+                    <h2>Browse by Topic</h2>
+                </div>
+
+                <span id="topicCount">0 Topics</span>
+
+            </div>
+
+            <div id="topicCards" class="topic-grid"></div>
+
+            <div class="upload-section">
+
+                <h3>Import Java Programs ZIP</h3>
+
+                <p>
+                    Upload your Java programs ZIP file to load
+                    all folders and source code into the website.
+                </p>
+
+                <label for="zipInput" class="upload-btn">
+                    Choose ZIP File
+                </label>
+
+                <input
+                    type="file"
+                    id="zipInput"
+                    accept=".zip"
+                    hidden
+                >
+
+                <p id="uploadStatus"></p>
+
+            </div>
+
+        </section>
+
+        <!-- PROGRAM LIST -->
+
+        <section id="programSection" class="hidden">
+
+            <div class="section-heading">
+
+                <div>
+                    <small>SELECTED TOPIC</small>
+                    <h2 id="selectedTopic">Programs</h2>
+                </div>
+
+                <span id="programCount">0 Programs</span>
+
+            </div>
+
+            <div id="programList" class="program-grid"></div>
+
+        </section>
+
+        <!-- CODE VIEWER -->
+
+        <section id="codeSection" class="hidden">
+
+            <div class="program-heading">
+
+                <div>
+                    <small>SELECTED PROGRAM</small>
+                    <h1 id="fileName">q1.java</h1>
+                    <p id="filePath"></p>
+                </div>
+
+                <button id="downloadBtn" class="outline-btn">
+                    ↓ Download .java
+                </button>
+
+            </div>
+
+            <div class="panel">
+
+                <div class="panel-heading">
+                    <span>?</span>
+                    PROGRAM DETAILS
+                </div>
+
+                <p id="programDescription">
+                    Java source code.
+                </p>
+
+            </div>
+
+            <div class="panel code-panel">
+
+                <div class="panel-heading code-heading">
+
+                    <div>
+                        <span>&lt;/&gt;</span>
+                        JAVA CODE
+                    </div>
+
+                    <button id="copyBtn" class="copy-btn">
+                        ▢ Copy Code
+                    </button>
+
+                </div>
+
+                <pre><code id="codeBlock"></code></pre>
+
+            </div>
+
+            <button id="backBtn" class="outline-btn">
+                ← Back to Programs
+            </button>
+
+        </section>
+
+        <footer>
+            <span>Java Programming Lab</span>
+            <span>Organized by Topics · Built for Practice</span>
+        </footer>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
