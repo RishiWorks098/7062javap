@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,196 +14,199 @@
 
 <body>
 
-<header class="navbar">
-    <div class="brand">
-        <div class="logo">J</div>
-        <span>Java Programming <b>Lab</b></span>
-    </div>
-
-    <div class="nav-right">
-        <span class="status">● Practice Library</span>
-        <button id="menuBtn" class="menu-btn">☰</button>
-    </div>
-</header>
-
-<div class="layout">
-
-    <!-- SIDEBAR -->
-
-    <aside class="sidebar" id="sidebar">
-
-        <div class="sidebar-heading">
-            <small>LIBRARY</small>
-            <h2>Topics</h2>
+    <header class="navbar">
+        <div class="brand">
+            <div class="logo">J</div>
+            <span>Java Programming <b>Lab</b></span>
         </div>
 
-        <input
-            type="search"
-            id="searchInput"
-            placeholder="Search programs..."
-        >
-
-        <nav id="topicNav"></nav>
-
-        <div class="sidebar-footer">
-            <span>●</span> Java Source Collection
+        <div class="nav-right">
+            <span class="status">● Practice Library</span>
+            <button id="menuBtn" class="menu-btn">☰</button>
         </div>
+    </header>
 
-    </aside>
+    <div class="layout">
 
-    <!-- MAIN CONTENT -->
+        <!-- SIDEBAR -->
 
-    <main class="main-content">
+        <aside class="sidebar" id="sidebar">
 
-        <div class="breadcrumb">
-            <span>Home</span>
-            <span>/</span>
-            <span id="breadcrumbTopic">All Topics</span>
-        </div>
+            <div class="sidebar-heading">
+                <small>LIBRARY</small>
+                <h2>Topics</h2>
+            </div>
 
-        <!-- HOME PAGE -->
+            <input type="search" id="searchInput" placeholder="Search programs...">
 
-        <section id="homeSection">
+            <nav id="topicNav"></nav>
 
-            <div class="hero">
+            <div class="sidebar-footer">
+                <span>●</span> Java Source Collection
+            </div>
 
-                <div class="hero-content">
+        </aside>
 
-                    <small>JAVA PRACTICE COLLECTION</small>
+        <!-- MAIN CONTENT -->
 
-                    <h1>
-                        Learn Java.<br>
-                        <span>One program at a time.</span>
-                    </h1>
+        <main class="main-content">
 
-                    <p>
-                        Explore Java programs topic-wise.
-                        Read the source code, copy it and
-                        download individual programs.
-                    </p>
+            <div class="breadcrumb">
+                <span>Home</span>
+                <span>/</span>
+                <span id="breadcrumbTopic">All Topics</span>
+            </div>
 
-                    <div class="stats">
+            <!-- HOME PAGE -->
 
-                        <div>
-                            <h2 id="totalPrograms">0</h2>
-                            <small>Programs</small>
-                        </div>
+            <section id="homeSection">
 
-                        <div>
-                            <h2 id="totalTopics">0</h2>
-                            <small>Topics</small>
-                        </div>
+                <div class="hero">
 
-                        <div>
-                            <h2>Java</h2>
-                            <small>Language</small>
+                    <div class="hero-content">
+
+                        <small>JAVA PRACTICE COLLECTION</small>
+
+                        <h1>
+                            Learn Java.<br>
+                            <span>One program at a time.</span>
+                        </h1>
+
+                        <p>
+                            Explore Java programs topic-wise.
+                            Read the source code, copy it and
+                            download individual programs.
+                        </p>
+
+                        <div class="stats">
+
+                            <div>
+                                <h2 id="totalPrograms">0</h2>
+                                <small>Programs</small>
+                            </div>
+
+                            <div>
+                                <h2 id="totalTopics">0</h2>
+                                <small>Topics</small>
+                            </div>
+
+                            <div>
+                                <h2>Java</h2>
+                                <small>Language</small>
+                            </div>
+
                         </div>
 
                     </div>
 
-                </div>
-
-                <div class="hero-code">
-                    <div class="code-window">
-                        <span>class</span> HelloJava {<br><br>
-                        &nbsp;&nbsp;public static void main(String[] args) {<br><br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;System.out.println(<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Hello Java!"<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;);<br><br>
-                        &nbsp;&nbsp;}<br>
-                        }
+                    <div class="hero-code">
+                        <div class="code-window">
+                            <span>class</span> HelloJava {<br><br>
+                            &nbsp;&nbsp;public static void main(String[] args) {<br><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;System.out.println(<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Hello Java!"<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;);<br><br>
+                            &nbsp;&nbsp;}<br>
+                            }
+                        </div>
                     </div>
+
                 </div>
 
-            </div>
-
-            <div class="section-heading">
-
-                <div>
-                    <small>EXPLORE THE LIBRARY</small>
-                    <h2>Browse by Topic</h2>
-                </div>
-
-                <span id="topicCount">0 Topics</span>
-
-            </div>
-
-            <div id="topicCards" class="topic-grid"></div>
-
-        </section>
-
-        <!-- PROGRAM LIST -->
-
-        <section id="programSection" class="hidden">
-
-            <div class="section-heading">
-
-                <div>
-                    <small>SELECTED TOPIC</small>
-                    <h2 id="selectedTopic">Programs</h2>
-                </div>
-
-                <span id="programCount">0 Programs</span>
-
-            </div>
-
-            <div id="programList" class="program-grid"></div>
-
-        </section>
-
-        <!-- CODE VIEWER -->
-
-        <section id="codeSection" class="hidden">
-
-            <div class="program-heading">
-
-                <div>
-                    <small>SELECTED PROGRAM</small>
-                    <h1 id="fileName">q1.java</h1>
-                    <p id="filePath"></p>
-                </div>
-
-            </div>
-
-            <div class="panel">
-
-                <div class="panel-heading">
-                    <span>?</span>
-                    PROGRAM DETAILS
-                </div>
-
-                <p id="programDescription">
-                    Java source code.
-                </p>
-
-            </div>
-
-            <div class="panel code-panel">
-
-                <div class="panel-heading code-heading">
+                <div class="section-heading">
 
                     <div>
-                        <span>&lt;/&gt;</span>
-                        JAVA CODE
+                        <small>EXPLORE THE LIBRARY</small>
+                        <h2>Browse by Topic</h2>
+                    </div>
+
+                    <span id="topicCount">0 Topics</span>
+
+                </div>
+
+                <div id="topicCards" class="topic-grid"></div>
+
+            </section>
+
+            <!-- PROGRAM LIST -->
+
+            <section id="programSection" class="hidden">
+
+                <div class="section-heading">
+
+                    <div>
+                        <small>SELECTED TOPIC</small>
+                        <h2 id="selectedTopic">Programs</h2>
+                    </div>
+
+                    <span id="programCount">0 Programs</span>
+
+                </div>
+
+                <div id="programList" class="program-grid"></div>
+
+            </section>
+
+            <!-- CODE VIEWER -->
+
+            <section id="codeSection" class="hidden">
+
+                <div class="program-heading">
+
+                    <div>
+                        <small>SELECTED PROGRAM</small>
+                        <h1 id="fileName">q1.java</h1>
+                        <p id="filePath"></p>
                     </div>
 
                 </div>
 
-                <pre><code id="codeBlock"></code></pre>
+                <div class="panel">
 
-            </div>
+                    <div class="panel-heading">
+                        <span>?</span>
+                        PROGRAM DETAILS
+                    </div>
 
-            <button id="backBtn" class="outline-btn">
-                ← Back to Programs
-            </button>
+                    <p id="programDescription">
+                        Java source code.
+                    </p>
 
-        </section>
+                </div>
+                <div class="panel code-panel">
+    <div class="panel-heading code-heading">
+        <div>
+            <span>&lt;/&gt;</span>
+            JAVA CODE
+        </div>
+    </div>
 
-    </main>
-
+    <pre><code id="codeBlock"></code></pre>
 </div>
 
-<script src="script.js"></script>
+                <div class="panel output-panel">
+                    <div class="panel-heading">
+                        <span>&gt;_</span>
+                        OUTPUT
+                    </div>
+
+                    <div class="output-body">
+                        <pre id="outputBlock"></pre>
+                    </div>
+                </div>
+
+                <button id="backBtn" class="outline-btn">
+                    ← Back to Programs
+                </button>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="script.js"></script>
 
 </body>
+
 </html>
