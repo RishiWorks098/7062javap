@@ -1,4 +1,3 @@
-
 let programs = [];
 let selectedFolder = null;
 let selectedProgram = null;
