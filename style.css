@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
@@ -350,47 +351,6 @@ body {
     color: #8fa0b9;
 }
 
-/* UPLOAD */
-
-.upload-section {
-    margin-top: 30px;
-    padding: 22px;
-    background: var(--panel);
-    border: 1px dashed #465b78;
-    border-radius: 12px;
-    text-align: center;
-}
-
-.upload-section h3 {
-    font-size: 16px;
-    margin-bottom: 8px;
-}
-
-.upload-section p {
-    font-size: 12px;
-    color: var(--muted);
-    margin-bottom: 15px;
-}
-
-.upload-btn {
-    display: inline-block;
-    background: var(--accent);
-    color: #172033;
-    padding: 11px 20px;
-    border-radius: 8px;
-    font-size: 12px;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.upload-btn:hover {
-    background: var(--accent-light);
-}
-
-#uploadStatus {
-    margin: 12px 0 0;
-}
-
 /* PROGRAM LIST */
 
 .program-card h3 {
@@ -418,8 +378,7 @@ body {
     font-size: 12px;
 }
 
-.outline-btn,
-.copy-btn {
+.outline-btn {
     background: #17263b;
     color: #e8effa;
     border: 1px solid #3b4d68;
@@ -430,8 +389,7 @@ body {
     font-size: 12px;
 }
 
-.outline-btn:hover,
-.copy-btn:hover {
+.outline-btn:hover {
     border-color: var(--accent);
     color: var(--accent-light);
 }
@@ -481,10 +439,6 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-}
-
-.copy-btn {
-    padding: 8px 12px;
 }
 
 pre {
