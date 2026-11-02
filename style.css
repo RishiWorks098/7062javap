@@ -554,3 +554,19 @@ footer {
     }
 
 }
+.output-panel {
+    border-color: #2c4a3b;
+}
+
+.output-body {
+    background: #0a1220;
+    padding: 20px;
+    min-height: 120px;
+}
+
+#outputBlock {
+    color: #b9e7cd;
+    font: 12px/1.8 'DM Mono', monospace;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
