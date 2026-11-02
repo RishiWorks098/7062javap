@@ -1,3 +1,4 @@
+
 let programs = [];
 let selectedFolder = null;
 let selectedProgram = null;
@@ -24,15 +25,8 @@ function getFolders() {
         .sort((a, b) => a.localeCompare(b));
 }
 
-// Load ZIP file
+// Load ZIP file automatically
 async function loadZip(file) {
-
-    if (!file || !file.name.toLowerCase().endsWith(".zip")) {
-        $("uploadStatus").textContent = "Please select a valid ZIP file.";
-        return;
-    }
-
-    $("uploadStatus").textContent = "Loading Java programs...";
 
     try {
 
@@ -72,7 +66,7 @@ async function loadZip(file) {
         }
 
         if (loadedPrograms.length === 0) {
-            throw new Error("No Java files found in this ZIP.");
+            throw new Error("No Java files found in the ZIP file.");
         }
 
         programs = loadedPrograms.sort((a, b) =>
@@ -86,14 +80,19 @@ async function loadZip(file) {
         $("totalPrograms").textContent = programs.length;
         $("totalTopics").textContent = getFolders().length;
 
-        $("uploadStatus").textContent =
-            `Successfully loaded ${programs.length} Java programs!`;
-
         showHome();
 
     } catch (error) {
 
-        $("uploadStatus").textContent = error.message;
+        console.error("Error loading Java programs:", error);
+
+        $("totalPrograms").textContent = "0";
+        $("totalTopics").textContent = "0";
+
+        $("topicCards").textContent =
+            "Unable to load Java programs. Please check that java_programs.zip is in your repository.";
+
+        $("topicCount").textContent = "0 Topics";
 
     }
 
@@ -308,13 +307,11 @@ function showProgram(program) {
         formatName(program.folder) +
         " topic. File: " + program.file;
 
-    // textContent safely displays Java source code
+    // Safely display Java source code
     $("codeBlock").textContent = program.code;
 
     $("breadcrumbTopic").textContent =
         formatName(program.folder) + " / " + program.file;
-
-    $("copyBtn").textContent = "▢ Copy Code";
 
     renderNav();
 
@@ -324,55 +321,6 @@ function showProgram(program) {
     });
 
 }
-
-// Copy Java code
-$("copyBtn").addEventListener("click", async () => {
-
-    if (!selectedProgram) return;
-
-    try {
-
-        await navigator.clipboard.writeText(
-            selectedProgram.code
-        );
-
-        $("copyBtn").textContent = "✓ Copied!";
-
-    } catch {
-
-        $("copyBtn").textContent =
-            "Copy unavailable";
-
-    }
-
-});
-
-// Download individual Java file
-$("downloadBtn").addEventListener("click", () => {
-
-    if (!selectedProgram) return;
-
-    const blob = new Blob(
-        [selectedProgram.code],
-        { type: "text/plain;charset=utf-8" }
-    );
-
-    const url = URL.createObjectURL(blob);
-
-    const link = document.createElement("a");
-
-    link.href = url;
-    link.download = selectedProgram.file;
-
-    document.body.appendChild(link);
-
-    link.click();
-
-    link.remove();
-
-    URL.revokeObjectURL(url);
-
-});
 
 // Back button
 $("backBtn").addEventListener("click", () => {
@@ -395,13 +343,13 @@ $("searchInput").addEventListener("input", event => {
         if (selectedFolder) {
             showFolder(selectedFolder);
         } else {
-            renderTopicCards();
+            showHome();
         }
 
         return;
     }
 
-    // Search across every topic and filename
+    // Search across every topic, filename and code
     const results = programs.filter(program => {
 
         return (
@@ -435,17 +383,6 @@ $("menuBtn").addEventListener("click", () => {
 
 });
 
-// Upload ZIP manually
-$("zipInput").addEventListener("change", event => {
-
-    const file = event.target.files[0];
-
-    if (file) {
-        loadZip(file);
-    }
-
-});
-
 // Automatically load ZIP from repository
 async function initializeWebsite() {
 
@@ -459,18 +396,14 @@ async function initializeWebsite() {
 
         const blob = await response.blob();
 
-        const file = new File(
-            [blob],
-            DEFAULT_ZIP,
-            { type: "application/zip" }
-        );
+        await loadZip(blob);
 
-        await loadZip(file);
+    } catch (error) {
 
-    } catch {
+        console.error("Unable to load ZIP file:", error);
 
-        $("uploadStatus").textContent =
-            "Upload your Java programs ZIP to get started.";
+        $("topicCards").textContent =
+            "Unable to load Java programs. Please check that java_programs.zip is uploaded to your GitHub repository.";
 
     }
 
