@@ -2,6 +2,15 @@
 let programs = [];
 let selectedFolder = null;
 let selectedProgram = null;
+// Add expected output for each program here.
+// Key must match the program path shown in the code viewer.
+
+const programOutputs = {
+    // "FolderName/q1.java": "Hello Java!",
+
+    // Example:
+    // "Basics/q1.java": `Hello Java!`,
+};
 
 const $ = id => document.getElementById(id);
 
@@ -309,6 +318,7 @@ function showProgram(program) {
 
     // Safely display Java source code
     $("codeBlock").textContent = program.code;
+    $("outputBlock").textContent = programOutputs[program.path] || "";
 
     $("breadcrumbTopic").textContent =
         formatName(program.folder) + " / " + program.file;
